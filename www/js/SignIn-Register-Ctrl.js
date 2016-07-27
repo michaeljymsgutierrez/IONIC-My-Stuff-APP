@@ -12,8 +12,8 @@ app.controller('signInCtrl',function($scope,$location,$firebaseAuth){
         
         var ref = new Firebase("https://mystuff-d12d5.firebaseio.com/");
         ref.authWithPassword({
-        email    : "bobtony@firebase.com",
-        password : "correcthorsebatterystaple"
+        email    : userlog,
+        password : passlog
         }, function(error, authData) {
         if (error) {
             console.log("Login Failed!", error);
