@@ -1,15 +1,30 @@
 
 //SigIn Controller
-app.controller('signInCtrl',function($scope,$location,$firebaseAuth,$firebaseProvider){
+app.controller('signInCtrl',function($scope,$location,$firebaseAuth){
   
     //function signin
     $scope.login = function(userlog,passlog) {
      
         console.log('Log In Clicked');
-        console.log("User: "+userlog+" Pass: "+passlog);
+       
+         /* 
         
-      
-        var ref = new Firebase("https://<YOUR-FIREBASE-APP>.firebaseio.com");
+        $scope.login = function(username, password) {
+            var fbAuth = $firebaseAuth(fb);
+            fbAuth.$authWithPassword({
+                email: userlog,
+                password: passlog
+            }).then(function(authData) {
+                
+                console.log("User: "+userlog+" Pass: "+passlog);
+                $location.path("/todo");
+                
+            }).catch(function(error) {
+                console.error("ERROR: " + error);
+            });
+        }        
+     */  
+        var ref = new Firebase("https://mystuff-d12d5.firebaseio.com/");
         ref.authWithPassword({
         email    : "bobtony@firebase.com",
         password : "correcthorsebatterystaple"
@@ -20,7 +35,7 @@ app.controller('signInCtrl',function($scope,$location,$firebaseAuth,$firebasePro
             console.log("Authenticated successfully with payload:", authData);
         }
         });
-            
+         
     }
     
     
