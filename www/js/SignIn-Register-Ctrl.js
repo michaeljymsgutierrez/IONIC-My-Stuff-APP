@@ -24,10 +24,13 @@ app.controller('signInCtrl',function($scope,$location,$firebaseAuth){
             });
         }        
      */  
+    
+        $scope.user_log = userlog;
+        $scope.pass_log = passlog
         var ref = new Firebase("https://mystuff-d12d5.firebaseio.com/");
         ref.authWithPassword({
-        email    : "bobtony@firebase.com",
-        password : "correcthorsebatterystaple"
+        email    : $scope.user_log,
+        password : $scope.pass_log
         }, function(error, authData) {
         if (error) {
             console.log("Login Failed!", error);
