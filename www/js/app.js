@@ -22,7 +22,7 @@ var app = angular.module('starter', ['ionic','firebase'])
     }
    
    
-   fb = new Firebase('https://mystuff-d12d5.firebaseio.com/');
+   //fb = new Firebase('https://mystuff-d12d5.firebaseio.com/');
   });
 })
 
