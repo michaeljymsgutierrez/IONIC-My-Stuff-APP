@@ -24,7 +24,13 @@
     {
       "locator": "https://github.com/michaeljymsgutierrez/cordova-plugin-inappbrowser",
       "id": "cordova-plugin-inappbrowser"
+    },
+    {
+      "locator": "https://github.com/litehelpers/Cordova-sqlite-storage.git",
+      "id": "cordova-sqlite-storage"
     }
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    "android"
+  ]
 }
