@@ -1,6 +1,6 @@
 
 //SigIn Controller
-app.controller('signInCtrl',function($scope,$location){
+app.controller('signInCtrl',function($scope,$location,$cordovaSQLite){
   
     //function signin
     $scope.login = function(userlog,passlog) {
@@ -26,8 +26,23 @@ app.controller('signInCtrl',function($scope,$location){
     $scope.register = function(user,pass){
         
         console.log('Register Clicked');
+        console.log("Username: "+ user + " *** Password: "+pass);
+
         
+     
+       
+  
+
+            //SQLite Save Query
+            var query ="INSERT INTO user_tb (uname,upass) VALUES (?,?)";
+            $cordovaSQLite.execute(db,query,[user,pass]).then(function(result){
+                console.log(result.insertId);
+                
+            },function(error){
+                console.log(error);
+            });
             
+ 
 
 
       
