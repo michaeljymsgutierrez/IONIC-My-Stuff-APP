@@ -32,7 +32,7 @@ app.run(function($ionicPlatform,$cordovaSQLite) {
     
         try {
           
-            db = $cordovaSQLite.openDB({name:"mystuff_db",location:'default'});
+            db = $cordovaSQLite.openDB({name:"stuff.db",location:'default'});
             console.log('Sucessful openDB');  
 
         } catch (error) {
@@ -45,7 +45,7 @@ app.run(function($ionicPlatform,$cordovaSQLite) {
         
         try{
           
-            $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS user_tb (id INTEGER PRIMARY KEY AUTOINCREMENT, uname TEXT, upass TEXT )');
+            $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS user_table (id INTEGER PRIMARY KEY AUTOINCREMENT, uname TEXT, upass TEXT )');
             console.log('Sucessful Create Table')
         
         }catch(error){

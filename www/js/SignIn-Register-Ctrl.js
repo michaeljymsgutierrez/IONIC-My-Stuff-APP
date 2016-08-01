@@ -22,6 +22,9 @@ app.controller('signInCtrl',function($scope,$location,$cordovaSQLite,$ionicPopup
     };
   
   
+  
+  
+  
     //Register Function **************************************************************
     $scope.register = function(user,pass){
         
@@ -29,7 +32,7 @@ app.controller('signInCtrl',function($scope,$location,$cordovaSQLite,$ionicPopup
             console.log("Username: "+ user + " *** Password: "+pass);
 
             //SQLite Save Query
-            var query ="INSERT INTO user_tb (uname,upass) VALUES (?,?)";
+            var query ="INSERT INTO user_table (uname,upass) VALUES (?,?)";
             $cordovaSQLite.execute(db,query,[user,pass]).then(function(result){
                 
                 console.log(result.insertId);

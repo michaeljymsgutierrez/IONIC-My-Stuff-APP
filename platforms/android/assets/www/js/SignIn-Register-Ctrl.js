@@ -1,8 +1,8 @@
 
 //SigIn Controller
-app.controller('signInCtrl',function($scope,$location,$cordovaSQLite){
+app.controller('signInCtrl',function($scope,$location,$cordovaSQLite,$ionicPopup,$timeout){
   
-    //function signin
+    //Signin Function ****************************************************************
     $scope.login = function(userlog,passlog) {
      
         console.log('Log In Clicked');
@@ -13,7 +13,7 @@ app.controller('signInCtrl',function($scope,$location,$cordovaSQLite){
     
     
     
-    //function signup
+    //Signup Function ****************************************************************
     $scope.signUp = function(){
 
           console.log("Sign Up Page Loaded");
@@ -22,32 +22,51 @@ app.controller('signInCtrl',function($scope,$location,$cordovaSQLite){
     };
   
   
-    //function register 
+  
+  
+  
+    //Register Function **************************************************************
     $scope.register = function(user,pass){
         
-        console.log('Register Clicked');
-        console.log("Username: "+ user + " *** Password: "+pass);
+            console.log('Register Clicked');
+            console.log("Username: "+ user + " *** Password: "+pass);
 
-        
-     
-       
-  
-
-     //Save Query
-            var query ="INSERT INTO user_tb (uname,upass) VALUES (?,?)";
+            //SQLite Save Query
+            var query ="INSERT INTO user_table (uname,upass) VALUES (?,?)";
             $cordovaSQLite.execute(db,query,[user,pass]).then(function(result){
-                console.log(result.rows.item(0).uname);
+                
+                console.log(result.insertId);
+                $scope.myAlert = $ionicPopup.alert({
+                        title:'Notification',
+                        template :'Account successfully created </br> Thank You'                        
+                })
+                
+                if($scope.myAlert){
+                   
+                   $timeout(function(){
+                        $location.path('/signIn');
+                   },5000);
+                   
+                    
+                }else{
+                    
+                    $ionicPopup({
+                        title: 'Notification',
+                        template: 'Failed to create account'
+                    });
+                }
+                
                 
             },function(error){
+                
                 console.log(error);
-            });
             
+            });
  
-
-
-      
-      
-    } ;
+    };
+    
+    
+    
   
   
 });
