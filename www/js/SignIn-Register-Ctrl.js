@@ -2,7 +2,7 @@
 //SigIn Controller
 app.controller('signInCtrl',function($scope,$location,$cordovaSQLite){
   
-    //function signin
+    //Signin Function
     $scope.login = function(userlog,passlog) {
      
         console.log('Log In Clicked');
@@ -13,7 +13,7 @@ app.controller('signInCtrl',function($scope,$location,$cordovaSQLite){
     
     
     
-    //function signup
+    //Signup Function
     $scope.signUp = function(){
 
           console.log("Sign Up Page Loaded");
@@ -22,32 +22,29 @@ app.controller('signInCtrl',function($scope,$location,$cordovaSQLite){
     };
   
   
-    //function register 
+    //Register Function
     $scope.register = function(user,pass){
         
-        console.log('Register Clicked');
-        console.log("Username: "+ user + " *** Password: "+pass);
-
-        
-     
-       
-  
+            console.log('Register Clicked');
+            console.log("Username: "+ user + " *** Password: "+pass);
 
             //SQLite Save Query
             var query ="INSERT INTO user_tb (uname,upass) VALUES (?,?)";
             $cordovaSQLite.execute(db,query,[user,pass]).then(function(result){
+                
                 console.log(result.insertId);
+                $location.path('/signIn');
                 
             },function(error){
+                
                 console.log(error);
-            });
             
+            });
  
-
-
-      
-      
-    } ;
+    };
+    
+    
+    
   
   
 });
