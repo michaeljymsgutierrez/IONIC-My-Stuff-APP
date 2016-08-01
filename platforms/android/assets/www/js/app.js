@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('starter', ['ionic','ngCordova'])
  
-var db= null;
+var db = null;
 app.run(function($ionicPlatform,$cordovaSQLite) {
   $ionicPlatform.ready(function() {
     
@@ -23,20 +23,40 @@ app.run(function($ionicPlatform,$cordovaSQLite) {
     }
     if(window.StatusBar) {
       StatusBar.styleDefault();
+      
+      
     }
-  
-    if (window.cordova && window.SQLitePlugin) {
-        $cordovaSQLite.openDB( 'accounts.db', 1 );
-        console.log('1');
-    } else {
-        console.log('2');
     
-    }
- /*
-    db = $cordovaSQLite.openDb({ name: "stuff.db"});
-    $cordovaSQLite.execute(db,"CREATE TABLE IF NOT EXISTS user (id integer primary key, user_email text, user_pass)");
-   */
-   
+    
+    // SQLite
+    
+        try {
+          
+            db = $cordovaSQLite.openDB({name:"mystuff_db",location:'default'});
+            console.log('Sucessful openDB');  
+
+        } catch (error) {
+        
+             console.log('Error openDB');
+        }
+        
+        
+        
+        
+        try{
+          
+            $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS user_tb (id INTEGER PRIMARY KEY AUTOINCREMENT, uname TEXT, upass TEXT )');
+            console.log('Sucessful Create Table')
+        
+        }catch(error){
+        
+            console.log('Error executeDb');
+        
+        }
+      
+
+
+    
 
   });
 })
