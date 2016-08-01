@@ -31,17 +31,27 @@ app.run(function($ionicPlatform,$cordovaSQLite) {
     // SQLite
     
         try {
+          
             db = $cordovaSQLite.openDB({name:"mystuff_db",location:'default'});
-            console.log('Sucessful openDB');
+            console.log('Sucessful openDB');  
+
         } catch (error) {
-            console.log('Error openDB');
+        
+             console.log('Error openDB');
         }
         
+        
+        
+        
         try{
-            $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, uname TEXT, upass TEXT )');
+          
+            $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS user_tb (id INTEGER PRIMARY KEY AUTOINCREMENT, uname TEXT, upass TEXT )');
             console.log('Sucessful Create Table')
+        
         }catch(error){
-          console.log('Error executeDb');
+        
+            console.log('Error executeDb');
+        
         }
       
 
