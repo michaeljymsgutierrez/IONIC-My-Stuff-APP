@@ -1,8 +1,8 @@
 
 //SigIn Controller
-app.controller('signInCtrl',function($scope,$location,$cordovaSQLite){
+app.controller('signInCtrl',function($scope,$location,$cordovaSQLite,$ionicPopup,$timeout){
   
-    //Signin Function
+    //Signin Function ****************************************************************
     $scope.login = function(userlog,passlog) {
      
         console.log('Log In Clicked');
@@ -13,7 +13,7 @@ app.controller('signInCtrl',function($scope,$location,$cordovaSQLite){
     
     
     
-    //Signup Function
+    //Signup Function ****************************************************************
     $scope.signUp = function(){
 
           console.log("Sign Up Page Loaded");
@@ -22,7 +22,7 @@ app.controller('signInCtrl',function($scope,$location,$cordovaSQLite){
     };
   
   
-    //Register Function
+    //Register Function **************************************************************
     $scope.register = function(user,pass){
         
             console.log('Register Clicked');
@@ -33,7 +33,26 @@ app.controller('signInCtrl',function($scope,$location,$cordovaSQLite){
             $cordovaSQLite.execute(db,query,[user,pass]).then(function(result){
                 
                 console.log(result.insertId);
-                $location.path('/signIn');
+                $scope.myAlert = $ionicPopup.alert({
+                        title:'Notification',
+                        template :'Account successfully created </br> Thank You'                        
+                })
+                
+                if($scope.myAlert){
+                   
+                   $timeout(function(){
+                        $location.path('/signIn');
+                   },5000);
+                   
+                    
+                }else{
+                    
+                    $ionicPopup({
+                        title: 'Notification',
+                        template: 'Failed to create account'
+                    });
+                }
+                
                 
             },function(error){
                 
