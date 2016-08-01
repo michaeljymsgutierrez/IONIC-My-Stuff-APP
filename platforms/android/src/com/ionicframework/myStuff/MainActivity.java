@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.ionicframework.ionicstuffapp286580;
+package com.ionicframework.myStuff;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

@@ -32,7 +32,7 @@ app.run(function($ionicPlatform,$cordovaSQLite) {
     
         try {
           
-            db = $cordovaSQLite.openDB({name:"stuff.db",location:'default'});
+            db = $cordovaSQLite.openDB({name:"mystuff.db",location:'default'});
             console.log('Sucessful openDB');  
 
         } catch (error) {
