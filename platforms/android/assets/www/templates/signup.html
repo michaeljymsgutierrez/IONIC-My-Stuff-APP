@@ -1,0 +1,35 @@
+<ion-view title="Sign Up">
+    
+    <ion-content>
+        <ion-nav-back-button></ion-nav-back-button>
+    
+        <div class="list-card">
+                <div class="list list-inset">
+                    
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Email</span>
+                        <input  ng-model="user" type="text" >
+                    </label>
+                    
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Password</span>
+                        <input ng-model="pass" type="text">
+                    </label>
+
+
+                </div>
+
+                
+                    
+                 <div align="center">          
+                    <button class="button  button-positive" ng-click="register(user,pass)"> Register</button>
+                 </div>
+                    
+                
+
+        </div>
+    
+    </ion-content>
+    
+          <ion-footer-bar class="bar-positive" ></ion-footer-bar>
+</ion-view>
