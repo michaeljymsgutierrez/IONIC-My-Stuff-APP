@@ -7,6 +7,18 @@ app.controller('signInCtrl',function($scope,$location,$cordovaSQLite,$ionicPopup
      
         console.log('Log In Clicked');
         
+        var query = "SELECT uname ,upass FROM user_table WHERE uname = ? and upass = ?, LIMIT 0";
+        
+        $cordovaSQLite.execute(db,query,[userlog, passlog]).then(function(result){
+       
+                console.log("Success Login");
+          
+            
+            
+        },function(error){
+            console.log("Failed Login");
+        });
+        
 
 
     }
