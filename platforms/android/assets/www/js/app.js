@@ -6,7 +6,8 @@
 var app = angular.module('starter', ['ionic','ngCordova'])
  
 var db = null;
-app.run(function($ionicPlatform,$cordovaSQLite) {
+
+app.run(function($ionicPlatform,$cordovaSQLite,$rootScope,$window) {
   $ionicPlatform.ready(function() {
     
 
