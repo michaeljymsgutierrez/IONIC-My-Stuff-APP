@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('starter', ['ionic','ngCordova'])
  
-var db = null;
+var db;
 
 app.run(function($ionicPlatform,$cordovaSQLite,$rootScope,$window) {
   $ionicPlatform.ready(function() {
@@ -24,8 +24,7 @@ app.run(function($ionicPlatform,$cordovaSQLite,$rootScope,$window) {
     }
     if(window.StatusBar) {
       StatusBar.styleDefault();
-      
-      
+            
     }
     
     
@@ -34,20 +33,18 @@ app.run(function($ionicPlatform,$cordovaSQLite,$rootScope,$window) {
         try {
           
             db = $cordovaSQLite.openDB({name:"mystuff.db",location:'default'});
-            console.log('Sucessful openDB');  
+            console.log('Sucessfull openDB');  
 
         } catch (error) {
         
-             console.log('Error openDB');
+            console.log('Error openDB');
         }
-        
-        
         
         
         try{
           
             $cordovaSQLite.execute(db, 'CREATE TABLE IF NOT EXISTS user_table (id INTEGER PRIMARY KEY AUTOINCREMENT, uname TEXT, upass TEXT )');
-            console.log('Sucessful Create Table')
+            console.log('Sucessfull Create Table')
         
         }catch(error){
         

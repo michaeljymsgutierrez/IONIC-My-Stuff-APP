@@ -6,19 +6,33 @@ app.controller('signInCtrl',function($scope,$location,$cordovaSQLite,$ionicPopup
     $scope.login = function(userlog,passlog) {
      
         console.log('Log In Clicked');
+     
         
-        var logQuery = "SELECT * FROM user_table WHERE uname = ? and upass = ?, LIMIT 1";
+        try{      
+              
+            var logQuery = "SELECT * FROM user_table WHERE uname = ? AND upass = ?";
+            $cordovaSQLite.execute(db,logQuery,[userlog,passlog]);
+            console.log("OKAY"); 
+                   
+        }catch(error){
+            console.log(error);
+        }
+
         
-        $cordovaSQLite.execute(db,logQuery,[userlog, passlog]).then(function(result){
-            
-            console.log("Success Login");
+        /*
+        .then(function(result){
+            if(result.uname == userlog){
+                
+                console.log("Success Login");
+                
+            }
                 
         },function(error){
             
             console.log("Failed Login");
         
         });
-
+        */
         
     }
     

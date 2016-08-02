@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 var app = angular.module('starter', ['ionic','ngCordova'])
  
-var db = null;
+var db;
 
 app.run(function($ionicPlatform,$cordovaSQLite,$rootScope,$window) {
   $ionicPlatform.ready(function() {
@@ -24,8 +24,7 @@ app.run(function($ionicPlatform,$cordovaSQLite,$rootScope,$window) {
     }
     if(window.StatusBar) {
       StatusBar.styleDefault();
-      
-      
+            
     }
     
     
@@ -38,7 +37,7 @@ app.run(function($ionicPlatform,$cordovaSQLite,$rootScope,$window) {
 
         } catch (error) {
         
-             console.log('Error openDB');
+            console.log('Error openDB');
         }
         
         
